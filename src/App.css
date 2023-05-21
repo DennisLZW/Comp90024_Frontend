@@ -3,7 +3,26 @@
   background-image: url('./background.jpg'); 
   background-size: contain;
   height: 100vh;
+  display: flex;
+  justify-content: center;
 }
+
+nav {
+  background-color: #333;
+  padding: 1em 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin: 0 1em;
+}
+
+nav a:hover {
+  color: #ddd;
+}
+
+
 
 /* .App-logo {
   height: 40vmin;
