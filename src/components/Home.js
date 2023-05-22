@@ -22,10 +22,10 @@ function Home(){
         </div> 
         <button className="buttonStyle" onClick={handleClick}>Start</button>
     </div>
-    <div className="introduction">
+    {/* <div className="introduction">
         <h2>Introduction</h2>
         <p>This is some introduction text...</p>
-    </div>
+    </div> */}
     </div>
       );
 }
