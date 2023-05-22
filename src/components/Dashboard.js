@@ -143,10 +143,14 @@ function Dashboard() {
     const data_bar = await FetchData(url_bar);
     const url_twitter_sentiment = `http://172.26.134.0/houserental/twitter_sentiment/${name}/`;
     const data_twitter =await FetchData(url_twitter_sentiment);
-    const url_word = `http://172.26.134.0/houserental/twitter_word_cloud/${name}/`;
+    // const url_word = `http://172.26.134.0/houserental/twitter_word_cloud/${name}/`;
+    
+    const url_word = `http://127.0.0.1:8000/houserental/twitter_word_cloud/kew/`;
 
-    const url_twitter_time =  `http://172.26.134.0/houserental/twitter_created_time/${name}/`;
+    // const url_twitter_time =  `http://172.26.134.0/houserental/twitter_created_time/${name}/`;
+    const url_twitter_time =  `http://127.0.0.1:8000/houserental/twitter_created_time/kew//`;
     const data_twitter_time = await FetchData(url_twitter_time);
+    
 
     const url_heat = `http://172.26.134.0/houserental/location_unemploy/${name}/`;
     const data_heat = await FetchData(url_heat);
