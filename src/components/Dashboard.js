@@ -13,7 +13,9 @@ import HeatmapChart from './heatchart';
 import BarChart1 from './Barchart1';
 import LineChart_State from './Linechart_state';
 import LineChart_State_income from './Linechart_state_income';
-
+import PieChart_mastodon from './Piechart_mastodon';
+import PieChart_twitter from './piechart_twitter';
+import BarChart1_time from './barchart_time';
 
 import {
   MapContainer,
@@ -50,25 +52,25 @@ function Dashboard() {
   }
 
   const getAllDataAndDraw_income = async () => {
-    const url_income_Vic = `http://172.26.134.0/houserental/state_income/Victoria/`;
+    const url_income_Vic = `http://127.0.0.1:8000/houserental/state_income/Victoria/`;
     const data_income_Vic = await FetchData(url_income_Vic);
 
-    const url_income_SA = `http://172.26.134.0/houserental/state_income/South%20Australia/`;
+    const url_income_SA = `http://127.0.0.1:8000/houserental/state_income/South%20Australia/`;
     const data_income_SA = await FetchData(url_income_SA);
 
-    const url_income_NSW = `http://172.26.134.0/houserental/state_income/New%20South%20Wales/`;
+    const url_income_NSW = `http://127.0.0.1:8000/houserental/state_income/New%20South%20Wales/`;
     const data_income_NSW = await FetchData(url_income_NSW);
 
-    const url_income_TA = `http://172.26.134.0/houserental/state_income/Tasmania/`;
+    const url_income_TA = `http://127.0.0.1:8000/houserental/state_income/Tasmania/`;
     const data_income_TA = await FetchData(url_income_TA);
 
-    const url_income_QL = `http://172.26.134.0/houserental/state_income/Queensland/`;
+    const url_income_QL = `http://127.0.0.1:8000/houserental/state_income/Queensland/`;
     const data_income_QL = await FetchData(url_income_QL);
 
-    const url_income_NT = `http://172.26.134.0/houserental/state_income/Northern%20Territory/`;
+    const url_income_NT = `http://127.0.0.1:8000/houserental/state_income/Northern%20Territory/`;
     const data_income_NT = await FetchData(url_income_NT);
 
-    const url_income_WA = `http://172.26.134.0/houserental/state_income/Western%20Australia/`;
+    const url_income_WA = `http://127.0.0.1:8000/houserental/state_income/Western%20Australia/`;
     const data_income_WA = await FetchData(url_income_WA);
 
 
@@ -91,25 +93,25 @@ function Dashboard() {
   }
 
   const getAllDataAndDraw = async () => {
-    const url_rent_Vic = `http://172.26.134.0/houserental/state_rent/Victoria/`;
+    const url_rent_Vic = `http://127.0.0.1:8000/houserental/state_rent/Victoria/`;
     const data_line_Vic = await FetchData(url_rent_Vic);
 
-    const url_rent_SA = `http://172.26.134.0/houserental/state_rent/South%20Australia/`;
+    const url_rent_SA = `http://127.0.0.1:8000/houserental/state_rent/South%20Australia/`;
     const data_line_SA = await FetchData(url_rent_SA);
 
-    const url_rent_NSW = `http://172.26.134.0/houserental/state_rent/New%20South%20Wales/`;
+    const url_rent_NSW = `http://127.0.0.1:8000/houserental/state_rent/New%20South%20Wales/`;
     const data_line_NSW = await FetchData(url_rent_NSW);
 
-    const url_rent_TA = `http://172.26.134.0/houserental/state_rent/Tasmania/`;
+    const url_rent_TA = `http://127.0.0.1:8000/houserental/state_rent/Tasmania/`;
     const data_line_TA = await FetchData(url_rent_TA);
 
-    const url_rent_QL = `http://172.26.134.0/houserental/state_rent/Queensland/`;
+    const url_rent_QL = `http://127.0.0.1:8000/houserental/state_rent/Queensland/`;
     const data_line_QL = await FetchData(url_rent_QL);
 
-    const url_rent_NT = `http://172.26.134.0/houserental/state_rent/Northern%20Territory/`;
+    const url_rent_NT = `http://127.0.0.1:8000/houserental/state_rent/Northern%20Territory/`;
     const data_line_NT = await FetchData(url_rent_NT);
 
-    const url_rent_WA = `http://172.26.134.0/houserental/state_rent/Western%20Australia/`;
+    const url_rent_WA = `http://127.0.0.1:8000/houserental/state_rent/Western%20Australia/`;
     const data_line_WA = await FetchData(url_rent_WA);
 
 
@@ -129,16 +131,24 @@ function Dashboard() {
   const handleClick = async (feature) => {
     const name = feature.properties.STATE_NAME || feature.properties.name;
 
-    const url_pie = `http://172.26.134.0/houserental/location_deposit/${name}/`;
+    const url_pie = `http://127.0.0.1:8000/houserental/location_deposit/${name}/`;
     const data_pie = await FetchData(url_pie);
 
-    const url_line = `http://172.26.134.0/houserental/location_income/${name}/`;
+    const url_line = `http://127.0.0.1:8000/houserental/location_income/${name}/`;
     const data_line = await FetchData(url_line);
+    const url_mastodon = `http://127.0.0.1:8000/houserental/mastodon_sentiment/`;
+    const data_mastodon = await FetchData(url_mastodon);
 
-    const url_bar =  `http://172.26.134.0/houserental/location_rent/${name}/`;
+    const url_bar =  `http://127.0.0.1:8000/houserental/location_rent/${name}/`;
     const data_bar = await FetchData(url_bar);
+    const url_twitter_sentiment = `http://127.0.0.1:8000/houserental/twitter_sentiment/${name}/`;
+    const data_twitter =await FetchData(url_twitter_sentiment);
+    const url_word = `http://127.0.0.1:8000/houserental/twitter_word_cloud/${name}/`;
 
-    const url_heat = `http://172.26.134.0/houserental/location_unemploy/${name}/`;
+    const url_twitter_time =  `http://127.0.0.1:8000/houserental/twitter_created_time/${name}/`;
+    const data_twitter_time = await FetchData(url_twitter_time);
+
+    const url_heat = `http://127.0.0.1:8000/houserental/location_unemploy/${name}/`;
     const data_heat = await FetchData(url_heat);
 
 
@@ -147,7 +157,10 @@ function Dashboard() {
       lineData: data_line,
       barData: data_bar,
       heatData: data_heat,
-      
+      mastodon: data_mastodon,
+      twitter_se: data_twitter,
+      twitter_word: url_word,
+      twitter_time: data_twitter_time,
     });
     setSelectedFeature(feature);
     setShowPieChart(true);
@@ -168,9 +181,21 @@ function Dashboard() {
       case 'pie':
         return fetchedData && <PieChart data={fetchedData.pieData.content} />;
       case 'line':
-        return fetchedData && <BarChart1 data={fetchedData.lineData.content} />;
+        return fetchedData && (
+          <React.Fragment>
+            <BarChart1 data={fetchedData.lineData.content} />
+            <PieChart_mastodon data={fetchedData.mastodon.content} />
+          </React.Fragment>
+        );
       case 'bar':
-        return fetchedData && <BarChart data={fetchedData.barData.content} />;
+        return fetchedData && (
+          <React.Fragment>
+            <BarChart data={fetchedData.barData.content} />
+            <PieChart_twitter data={fetchedData.twitter_se.content} />
+            <img src={fetchedData.twitter_word} alt="Twitter Word Cloud" /> 
+            <BarChart1_time data={fetchedData.twitter_time.content} />
+          </React.Fragment>
+        );
       case 'heat':
         return fetchedData && <LineChart data={fetchedData.heatData.content} />;
       default:
