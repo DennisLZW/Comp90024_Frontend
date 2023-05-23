@@ -163,8 +163,8 @@ function Dashboard() {
       heatData: data_heat,
       mastodon: data_mastodon,
       twitter_se: data_twitter,
-      twitter_word: url_word,
-      twitter_time: data_twitter_time,
+      // twitter_word: url_word,
+      // twitter_time: data_twitter_time,
     });
     setSelectedFeature(feature);
     setShowPieChart(true);
