@@ -145,11 +145,11 @@ function Dashboard() {
     const data_twitter =await FetchData(url_twitter_sentiment);
     // const url_word = `http://172.26.134.0/houserental/twitter_word_cloud/${name}/`;
     
-    const url_word = `http://127.0.0.1:8000/houserental/twitter_word_cloud/kew/`;
+    // const url_word = `http://127.0.0.1:8000/houserental/twitter_word_cloud/kew/`;
 
     // const url_twitter_time =  `http://172.26.134.0/houserental/twitter_created_time/${name}/`;
-    const url_twitter_time =  `http://127.0.0.1:8000/houserental/twitter_created_time/kew//`;
-    const data_twitter_time = await FetchData(url_twitter_time);
+    // const url_twitter_time =  `http://127.0.0.1:8000/houserental/twitter_created_time/kew//`;
+    // const data_twitter_time = await FetchData(url_twitter_time);
     
 
     const url_heat = `http://172.26.134.0/houserental/location_unemploy/${name}/`;
@@ -196,8 +196,8 @@ function Dashboard() {
           <React.Fragment>
             <BarChart data={fetchedData.barData.content} />
             <PieChart_twitter data={fetchedData.twitter_se.content} />
-            <img src={fetchedData.twitter_word} alt="Twitter Word Cloud" /> 
-            <BarChart1_time data={fetchedData.twitter_time.content} />
+            {/* <img src={fetchedData.twitter_word} alt="Twitter Word Cloud" />  */}
+            {/* <BarChart1_time data={fetchedData.twitter_time.content} /> */}
           </React.Fragment>
         );
       case 'heat':
